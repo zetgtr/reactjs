@@ -38,8 +38,8 @@ export const MessageMenu = (props) => {
           id="standard-basic"
           label="Ваше имя:"
           variant="standard"
-          value={props.auter}
-          onChange={(e) => props.onChengeAuter(e.target.value)}
+          value={props.author}
+          onChange={(e) => props.onChengeAuthor(e.target.value)}
         />
       </Menu>
     </div>

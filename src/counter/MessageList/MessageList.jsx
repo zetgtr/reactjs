@@ -35,11 +35,11 @@ export const MessageList = (props) => {
     <div>
       {props.messageList.map((message) => (
         <div key={message.messageFlexId} className="flex">
-          <Avatar key={message.avatarId} {...stringAvatar(message.auter)} />
+          <Avatar key={message.avatarId} {...stringAvatar(message.author)} />
           <div key={message.chatId} className="chat">
             <div>
-            <div className={message.class} key={message.auterId}>
-              {message.auter}
+            <div className={message.class} key={message.authorId}>
+              {message.author}
             </div>
             <div key={message.textId}>{message.text}</div>
             </div>

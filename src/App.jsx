@@ -4,33 +4,33 @@ import { v4 as uuidv4 } from "uuid";
 import "./App.css";
 import { MessageList } from "./counter/MessageList";
 import { MessageForm } from "./counter/MessageList/MessageForm";
-import { INITIAL_MESSAGE } from "./counter/MessageList/constantes";
-import { AUTER } from "./counter/MessageList/constantes";
-import { ListAuter } from "./counter/MessageList/ListAuter";
+import { INITIAL_MESSAGE } from "./counter/MessageList/constants";
+import { AUTHOR } from "./counter/MessageList/constants";
+import { ListAuthor } from "./counter/MessageList/ListAuthor";
 import { MessageMenu } from "./counter/MessageList/MessageMenu";
 
 export const App = () => {
   const now = new Date();
   const [messageList, setMessageList] = useState(INITIAL_MESSAGE);
-  const [auter, setAuter] = useState(AUTER);
+  const [author, setAuthor] = useState(AUTHOR);
   const [textList, setTextList] = useState("Пусто");
   const [text, setText] = useState("");
-  const [click, setClick] = useState(false);
-  const [auterId, setAuterId] = useState(uuidv4());
+  const [authorId, setAuthorId] = useState(uuidv4());
   const [textId, setTextId] = useState(uuidv4());
   const [avatarId, setAvatarId] = useState(uuidv4);
   const [chatId, setChatId] = useState(uuidv4);
   const [messageFlexId, setMessageFlexId] = useState(uuidv4);
   const [dataId, setDataId] = useState(uuidv4());
-  const hendlerChengeAuter = (e) => setAuter(e);
-  const hendlerChengeText = (e) => setText(e);
-  const heandlerClickMessege = () => {
-    if (auter.length > 0) {
+  const [click, setClick] = useState(false);
+  const hendlerChengeAuthor = (author) => setAuthor(author);
+  const hendlerChengeText = (text) => setText(text);
+  const handleAddMessage = () => {
+    if (author.length > 0) {
       setMessageList([
         ...messageList,
         {
-          auter: auter,
-          auterId: auterId,
+          author: author,
+          authorId: authorId,
           text: text,
           textId: textId,
           class: "human",
@@ -44,7 +44,7 @@ export const App = () => {
       setAvatarId(uuidv4);
       setChatId(uuidv4);
       setMessageFlexId(uuidv4);
-      setAuterId(uuidv4);
+      setAuthorId(uuidv4);
       setTextId(uuidv4);
       setDataId(uuidv4);
       setTextList(text);
@@ -59,8 +59,8 @@ export const App = () => {
         setMessageList([
           ...messageList,
           {
-            auter: "Бот",
-            auterId: auterId,
+            author: "Бот",
+            authorId: authorId,
             text: "Привет",
             textId: textId,
             class: "bot",
@@ -74,7 +74,7 @@ export const App = () => {
         setAvatarId(uuidv4);
         setChatId(uuidv4);
         setMessageFlexId(uuidv4);
-        setAuterId(uuidv4);
+        setAuthorId(uuidv4);
         setTextId(uuidv4);
         setDataId(uuidv4);
         setTextList("Привет");
@@ -84,9 +84,9 @@ export const App = () => {
 
   return (
     <div className="App">
-      <div className="AuterMessege">
-        <MessageMenu auter={auter} onChengeAuter={hendlerChengeAuter} />
-        <ListAuter messageList={messageList} textList={textList} />
+      <div className="AuthorMessege">
+        <MessageMenu author={author} onChengeAuthor={hendlerChengeAuthor} />
+        <ListAuthor messageList={messageList} textList={textList} />
       </div>
       <div className="MessageConteiner">
         <div className="MessageText">
@@ -95,9 +95,8 @@ export const App = () => {
           </div>
         </div>
         <MessageForm
-          auter={auter}
           text={text}
-          onClickMessege={heandlerClickMessege}
+          onClickMessege={handleAddMessage}
           onChengeText={hendlerChengeText}
         />
       </div>

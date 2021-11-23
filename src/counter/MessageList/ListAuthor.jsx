@@ -1,4 +1,4 @@
-import "./ListAuter.css"
+import "./ListAuthor.css"
 
 import * as React from 'react';
 import List from '@mui/material/List';
@@ -37,7 +37,7 @@ function stringToColor(string) {
     };
   }
 
-export const ListAuter = (props) => {
+export const ListAuthor = (props) => {
     return <div className="list">
          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">
@@ -61,8 +61,5 @@ export const ListAuter = (props) => {
         />
       </ListItem>
     </List>
-        {/* <Stack direction="row" spacing={2}>
-      <Avatar {...stringAvatar('Бот')} />
-    </Stack> */}
     </div>
 }
