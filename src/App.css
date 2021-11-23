@@ -1,8 +1,56 @@
+.App {
+  display: flex;
+  max-width: 1798px;
+  margin: auto;
+}
+
+
+.Message {
+ display: flex;
+  flex-direction: column-reverse;
+  align-items: baseline;
+  
+  width: 65%;
+}
+
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
 }
+
+.AuterMessege {
+  background-color: #fff;
+  min-height: 100vh;
+}
+
+.MessageForm {
+  position: absolute;
+  bottom: 50px;
+}
+
+.MessageConteiner{
+  background-image: url(./img/MessageFon.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  flex-grow: 3;
+  align-items: center;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.MessageText {
+   height: 80vh;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  
+}
+
+

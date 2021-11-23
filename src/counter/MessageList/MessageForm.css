@@ -1,22 +1,6 @@
-.formMessage {
-    display: flex;
-    flex-direction: column;
-    width: 500px;
+#outlined-textarea-label {
+    color: orange;
 }
-.formText::placeholder {
-    text-align: center;
-}
-
-.formText{
-    height: 50px;
-}
-
-.formAuter{
-    text-align: center;
-}
-
-.formButton {
-    height: 35px;
-    background-color: coral;
-    border-radius: 0px 0px 35px 35px;
+.MuiFormControl-root div fieldset {
+    border: none
 }

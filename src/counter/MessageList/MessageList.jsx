@@ -1,36 +1,52 @@
 import React from "react";
-import { v4 as uuidv4 } from "uuid";
 import "./MessageList.css";
 
+import Avatar from "@mui/material/Avatar";
+
+function stringToColor(string) {
+  let hash = 0;
+  let i;
+
+  for (i = 0; i < string.length; i += 1) {
+    hash = string.charCodeAt(i) + ((hash << 5) - hash);
+  }
+
+  let color = "#";
+
+  for (i = 0; i < 3; i += 1) {
+    const value = (hash >> (i * 8)) & 0xff;
+    color += `00${value.toString(16)}`.substr(-2);
+  }
+
+  return color;
+}
+
+function stringAvatar(name) {
+  return {
+    sx: {
+      bgcolor: stringToColor(name),
+    },
+    children: `${name.split(" ")[0][0]}`,
+  };
+}
+
 export const MessageList = (props) => {
-  // const [messageList, setMessageList] = useState(INITIAL_MESSAGE);
-  // const [auter, setAuter] = useState("");
-  // const [text, setText] = useState("");
-  // const [click, setClick] = useState(false);
-  // const hendleAuterChenge = (e) => setAuter(e.target.value);
-  // const hendleTextChenge = (e) => setText(e.target.value);
-  // const hendleClick = () => {
-  // setClick(!click);
-  // setMessageList([...props.messageList, { auter: auter, text: text, class: "human" }]);
-  // };
-
-  // useEffect(() => {
-  //   if (props.messageList.length > 0) {
-  //     setMessageList([...props.messageList, { auter: "Бот", text: "Привет", class: "bot" }]);
-  //   }
-  // }, [click]);
-
   return (
     <div>
-      <div className="chat">
-        <br />
-        {props.messageList.map((message) => (
-          <div className={message.class}>
-            <div key={uuidv4()}>{message.auter}</div>
-            <div key={uuidv4()}>{message.text}</div>
+      {props.messageList.map((message) => (
+        <div key={message.messageFlexId} className="flex">
+          <Avatar key={message.avatarId} {...stringAvatar(message.auter)} />
+          <div key={message.chatId} className="chat">
+            <div>
+            <div className={message.class} key={message.auterId}>
+              {message.auter}
+            </div>
+            <div key={message.textId}>{message.text}</div>
+            </div>
+            <div key={message.dataId} className="data">{message.data} </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };
