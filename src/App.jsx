@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from "uuid";
 
 import "./App.css";
 import { MessageList } from "./counter/MessageList";
-import { MessageForm } from "./counter/MessageList/MessageForm";
+import { MessageForm } from "./counter/MessageForm/MessageForm";
 import { INITIAL_MESSAGE } from "./counter/MessageList/constants";
 import { AUTHOR } from "./counter/MessageList/constants";
-import { ListAuthor } from "./counter/MessageList/ListAuthor";
-import { MessageMenu } from "./counter/MessageList/MessageMenu";
+import { ListAuthor } from "./counter/ListAuthor/ListAuthor";
+import { MessageMenu } from "./counter/MessageMenu/MessageMenu";
 
 export const App = () => {
   
