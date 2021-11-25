@@ -1,0 +1,25 @@
+.chat {
+  display: flex;
+  align-items: flex-end;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 20px;
+}
+.flex {
+  display: flex;
+  align-items: flex-end;
+}
+
+.human {
+  color: cornflowerblue;
+}
+
+.bot {
+  color: red;
+}
+.data {
+ color: gray;
+ font-size: 12px;
+ margin-left: 50px;
+}
