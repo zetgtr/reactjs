@@ -28,7 +28,7 @@ export const MessageForm = (props) => {
       <Button
         sx={{ borderRadius: "50%", height: " 57px", position: "relative" }}
         variant="contained"
-        onClick={props.onClickMessege}
+        onClick={()=>{props.onClickMessege(props.chatsId)}}
       >
         <SendIcon
           sx={{

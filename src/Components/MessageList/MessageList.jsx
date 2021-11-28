@@ -31,9 +31,14 @@ function stringAvatar(name) {
 }
 
 export const MessageList = (props) => {
+  if (props.messageList[props.chatsId] === undefined) {
+    props.messageList[props.chatsId] = [];
+  }
+  
+  // props.messageList = INITIAL_MESSAGE[props.chatsId]
   return (
-    <div>
-      {props.messageList.map((message) => (
+     <div>
+      {props.messageList[props.chatsId].map((message) => (
         <div key={message.messageId} className="flex">
           <Avatar {...stringAvatar(message.author)} />
           <div className="chat">
