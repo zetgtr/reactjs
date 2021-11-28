@@ -1,0 +1,16 @@
+.list{
+    width: 0px;
+}
+.css-1ec4mnk-MuiFormControl-root-MuiTextField-root{
+    margin-left: 32px;
+}
+
+.linkChat {
+    text-decoration: none
+}
+
+.ListAuthor {
+    display: flex;
+    justify-content: space-between;
+    width: 298px;
+}
