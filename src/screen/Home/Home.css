@@ -2,13 +2,6 @@
   display: flex;
 }
 
-.Message {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: baseline;
-  width: 65%;
-}
-
 .App-header {
   min-height: 100vh;
   display: flex;
@@ -25,11 +18,6 @@
   overflow-y: auto;
 }
 
-.MessageForm {
-  position: absolute;
-  bottom: 50px;
-}
-
 .MessageConteiner {
   background-image: url(../../img/MessageFon.jpg);
   background-size: cover;
@@ -40,15 +28,6 @@
   display: flex;
   position: relative;
   flex-direction: column;
-}
-
-.MessageText {
-  height: 80vh;
-  width: 100%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
 }
 
 .Menu {
