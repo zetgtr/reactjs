@@ -1,6 +1,8 @@
 import React from "react";
+import { Provider } from "react-redux";
 import "./App.css";
 import { Router } from "./Router";
+import { store } from "./Store";
 
 export const ROUTER = {
   HOME: "/",
@@ -10,9 +12,9 @@ export const ROUTER = {
 
 export const App = () => {
   return (
-    <>
+    <Provider store={store}>
       <Router />
-    </>
+    </Provider>
   );
 };
 

@@ -15,26 +15,26 @@ import {
   INITIAL_MESSAGE,
   MESSAGELAST,
 } from "../Components/MessageList/constants";
-import { AUTHOR } from "../Components/MessageList/constants";
+import { profileSelector } from "../Store/Profile/selector";
+import { useSelector } from "react-redux";
 
 export const Router = () => {
   const [chatList] = useState(INIT_CHATS);
   const [click, setClick] = useState(false);
   const [botId, setBotId] = useState("id1");
   const [messageList, setMessageList] = useState([]);
-  const [author, setAuthor] = useState(AUTHOR);
+  const { name } = useSelector(profileSelector);
   const [messageLast, setMessageLast] = useState({ id1: "Пусто" });
   const [text, setText] = useState("");
-  const hendleChengeAuthor = (author) => setAuthor(author);
   const handleChangeText = (text) => setText(text);
   const handleAddMessage = (chatId) => {
     let now = new Date();
-    if (author.length > 0) {
+    if (name !== '') {
       MESSAGELAST[chatId] = text;
       INITIAL_MESSAGE[chatId] = [
         ...messageList[chatId],
         {
-          author: author,
+          author: name,
           messageId: uuidv4(),
           text: text,
           class: "human",
@@ -42,7 +42,6 @@ export const Router = () => {
         },
       ];
       setMessageList(INITIAL_MESSAGE); // Я вот про это спрашивал на уроке без click оно не работает
-      console.log(messageList);
       setMessageLast(MESSAGELAST);
       setBotId(chatId);
       setClick(!click);
@@ -53,7 +52,6 @@ export const Router = () => {
   useEffect(() => {
     let now = new Date();
     if (messageList[botId] !== undefined) {
-      console.log(messageList.length);
       let timer = setTimeout(() => {
         INITIAL_MESSAGE[botId] = [
           ...messageList[botId],
@@ -133,7 +131,7 @@ export const Router = () => {
           No chat content
         </Route>
         <Route exact path={ROUTER.PROFILE}>
-          <Profile author={author} onChengeAuthor={hendleChengeAuthor} />
+          <Profile />
         </Route>
         <Route path={ROUTER.NOT_FOUND}>Not found 404</Route>
         <Route>
