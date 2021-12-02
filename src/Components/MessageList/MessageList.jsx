@@ -1,50 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MessageList.css";
 
 import Avatar from "@mui/material/Avatar";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
+import { messageListSelector } from "../../Store/Messages/selector";
+import { stringAvatar } from "../utils";
+import { addMessageBotAction } from "../../Store/Messages/actions";
 
-function stringToColor(string) {
-  let hash = 0;
-  let i;
-
-  for (i = 0; i < string.length; i += 1) {
-    hash = string.charCodeAt(i) + ((hash << 5) - hash);
-  }
-
-  let color = "#";
-
-  for (i = 0; i < 3; i += 1) {
-    const value = (hash >> (i * 8)) & 0xff;
-    color += `00${value.toString(16)}`.substr(-2);
-  }
-
-  return color;
-}
-
-function stringAvatar(name) {
-  return {
-    sx: {
-      bgcolor: stringToColor(name),
-    },
-    children: `${name.split(" ")[0][0]}`,
-  };
-}
-
-export const MessageList = (props) => {
-  if (props.messageList[props.chatsId] === undefined) {
-    props.messageList[props.chatsId] = [];
-  }
-  
-  // props.messageList = INITIAL_MESSAGE[props.chatsId]
+export const MessageList = () => {
+  const dispatch = useDispatch();
+  const { chatsId } = useParams();
+  const messageList = useSelector(messageListSelector);
+  messageList[chatsId] = messageList[chatsId] ?? [];
+  useEffect(() => {
+    let time = setTimeout(() => {
+      dispatch(addMessageBotAction({ chatId: chatsId }));
+    }, 1500);
+    clearTimeout(time); // он так не чего не отправляет, а если я уберу он вечно отправляет сообщение (я знаю это 1ые уроки, но я не понимаю как это убрать подскажите пожалуйста напишите как это должно выглядеть)
+    return time;
+  }, [messageList[chatsId].length]);
   return (
-     <div>
-      {props.messageList[props.chatsId].map((message) => (
-        <div key={message.messageId} className="flex">
-          <Avatar {...stringAvatar(message.author)} />
+    <div>
+      {messageList[chatsId].map((message) => (
+        <div key={message.id} className="flex">
+          <Avatar {...stringAvatar(message.name)} />
           <div className="chat">
             <div>
-              <div className={message.class}>{message.author}</div>
-              <div>{message.text}</div>
+              <div className={message.class}>{message.name}</div>
+              <div>{message.textMessage}</div>
             </div>
             <div className="data">{message.data} </div>
           </div>

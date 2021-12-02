@@ -1,16 +1,14 @@
 import { TextField } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { store } from "../../Store";
 import {
   hendleChengeAuthorAction,
   toggleUserNameAction,
 } from "../../Store/Profile/actions";
 import { profileSelector } from "../../Store/Profile/selector";
-
 import "./Profile.css";
 
-export const Profile = (props) => {
+export const Profile = () => {
   const dispatch = useDispatch();
 
   const { name, showName } = useSelector(profileSelector);

@@ -1,10 +1,29 @@
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 
 import "./MessageForm.css";
+import { profileSelector } from "../../Store/Profile/selector";
+import { addMessageAction } from "../../Store/Messages/actions";
 
-export const MessageForm = (props) => {
+export const MessageForm = () => {
+  const { chatsId } = useParams();
+  const dispatch = useDispatch();
+  const { name } = useSelector(profileSelector);
+  const [textMessage, setTextMessage] = useState("");
+  const chengeTextMessage = (text) => {
+    setTextMessage(text);
+  };
+  const addMessage = () => {
+    if (name) {
+      dispatch(addMessageAction({ name, textMessage, chatId: chatsId }));
+    } else {
+      alert("Введите ваше имя");
+    }
+  };
   return (
     <div className="TextField-without-border-radius">
       <TextField
@@ -16,8 +35,8 @@ export const MessageForm = (props) => {
           width: "400px",
           outline: "none",
         }}
-        value={props.text}
-        onChange={(e) => props.onChengeText(e.target.value)}
+        value={textMessage}
+        onChange={(e) => chengeTextMessage(e.target.value)}
         id="outlined-textarea"
         label="Ваше сообщение:"
         autoFocus
@@ -28,7 +47,7 @@ export const MessageForm = (props) => {
       <Button
         sx={{ borderRadius: "50%", height: " 57px", position: "relative" }}
         variant="contained"
-        onClick={()=>{props.onClickMessege(props.chatsId)}}
+        onClick={addMessage}
       >
         <SendIcon
           sx={{

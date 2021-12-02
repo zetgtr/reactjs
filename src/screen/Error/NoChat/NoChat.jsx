@@ -1,9 +1,9 @@
 import React from "react";
-import "./Home.css";
-import { ListAuthor } from "../../Components/ListAuthor/ListAuthor";
+import "./NoChat.css";
+import { ListAuthor } from "../../../Components/ListAuthor/ListAuthor";
 
 
-export const Home = () => {
+export const NoChat = () => {
 
   return (
     <div className="App">
@@ -12,6 +12,7 @@ export const Home = () => {
         <ListAuthor />
       </div>
       <div className="MessageConteiner">
+        <h1 className="No-Chat">ЧАТА НЕ СУЩЕСТВУЕТ</h1>
       </div>
     </div>
   );

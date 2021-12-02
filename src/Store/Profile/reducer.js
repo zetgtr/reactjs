@@ -1,4 +1,4 @@
-import { HENDLE_CHENGE_AUTHOR_ACTION, TOGGLE_USER_NAME_ACTION } from "./constants";
+import { CHENGE_AUTHOR_ACTION, TOGGLE_USER_NAME_ACTION } from "./constants";
 
 const initialState = {
   showName: false,
@@ -14,10 +14,10 @@ export const profileReducer = (state = initialState, action) => {
         showName: !state.showName,
       };
     }
-    case HENDLE_CHENGE_AUTHOR_ACTION: {
+    case CHENGE_AUTHOR_ACTION: {
         return {
             ...state,
-            name: action.textName
+            name: action.payload
         }
     }
     default:
