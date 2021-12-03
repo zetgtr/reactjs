@@ -9,6 +9,7 @@
 .flex {
   display: flex;
   align-items: flex-end;
+  max-width: 452px;
 }
 
 .human {
@@ -23,3 +24,4 @@
  font-size: 12px;
  margin-left: 50px;
 }
+

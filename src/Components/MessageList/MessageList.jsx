@@ -4,21 +4,31 @@ import "./MessageList.css";
 import Avatar from "@mui/material/Avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { messageListSelector } from "../../Store/Messages/selector";
+import {
+  messageAutherSelector,
+  messageListSelector,
+} from "../../Store/Messages/selector";
 import { stringAvatar } from "../utils";
 import { addMessageBotAction } from "../../Store/Messages/actions";
+import { profileSelector } from "../../Store/Profile/selector";
 
 export const MessageList = () => {
   const dispatch = useDispatch();
   const { chatsId } = useParams();
   const messageList = useSelector(messageListSelector);
+  const auther = useSelector(messageAutherSelector);
+  const { name } = useSelector(profileSelector);
   messageList[chatsId] = messageList[chatsId] ?? [];
   useEffect(() => {
-    let time = setTimeout(() => {
-      dispatch(addMessageBotAction({ chatId: chatsId }));
-    }, 1500);
-    clearTimeout(time); // он так не чего не отправляет, а если я уберу он вечно отправляет сообщение (я знаю это 1ые уроки, но я не понимаю как это убрать подскажите пожалуйста напишите как это должно выглядеть)
-    return time;
+    let time = {};
+    if (auther[chatsId] === name) {
+      time = setTimeout(() => {
+        dispatch(addMessageBotAction({ chatId: chatsId }));
+      }, 1500);
+    }
+    return () => {
+      clearTimeout(time);
+    };
   }, [messageList[chatsId].length]);
   return (
     <div>
@@ -28,7 +38,7 @@ export const MessageList = () => {
           <div className="chat">
             <div>
               <div className={message.class}>{message.name}</div>
-              <div>{message.textMessage}</div>
+              <p>{message.textMessage}</p>
             </div>
             <div className="data">{message.data} </div>
           </div>

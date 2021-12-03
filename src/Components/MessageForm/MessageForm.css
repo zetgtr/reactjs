@@ -4,3 +4,13 @@
 .MuiFormControl-root div fieldset {
     border: none
 }
+
+.TextField-without-border-radius {
+    display: flex;
+    align-items: end;
+}
+
+.MuiFormControl-root {
+    max-height: 110px;
+    overflow: auto;
+}

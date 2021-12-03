@@ -3,7 +3,7 @@ import { ADD_CHAT_ACTION, DEL_CHAT_ACTION } from "./constants";
 
 const initialState = {
   chatList: [{ id: uuidv4(), name: "Бот", chatId: "id1"}],
-  chatId: 1
+  chatId: 1,
 };
 
 export const chatsReducer = (state = initialState, action) => {

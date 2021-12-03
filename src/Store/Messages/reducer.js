@@ -1,10 +1,12 @@
 import { v4 as uuidv4 } from "uuid";
+import faker from "faker/locale/ru";
 
 import { ADD_MESSAGE_ACTION, ADD_MESSAGE_BOT_ACTION, DEL_MESSAGE_ACTION } from "./constants";
 
 const initialState = {
   messageList: {},
   messageLast: {},
+  auther: {},
 };
 
 export const messagesReducer = (state = initialState, action) => {
@@ -16,6 +18,7 @@ export const messagesReducer = (state = initialState, action) => {
       return {
         ...state,
         messageLast: { ...state.messageLast, [chatId]: textMessage },
+        auther: {...state.auther, [chatId]: name},
         messageList: {
           ...state.messageList,
           [chatId]: [
@@ -34,11 +37,11 @@ export const messagesReducer = (state = initialState, action) => {
     case ADD_MESSAGE_BOT_ACTION: {
       const { chatId } = action.payload;
       const now = new Date();
-      let textBot = "Привет"
-      console.log(chatId)
+      let textBot = faker.lorem.text()
       return {
         ...state,
         messageLast: { ...state.messageLast, [chatId]: textBot },
+        auther: {...state.auther, [chatId]: "Бот"},
         messageList: {
           ...state.messageList,
           [chatId]: [
