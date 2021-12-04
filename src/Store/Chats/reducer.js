@@ -6,6 +6,8 @@ const initialState = {
   chatId: 1,
 };
 
+
+
 export const chatsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CHAT_ACTION: {

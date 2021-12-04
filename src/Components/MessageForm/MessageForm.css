@@ -7,10 +7,14 @@
 
 .TextField-without-border-radius {
     display: flex;
-    align-items: end;
+    align-items: center
 }
 
 .MuiFormControl-root {
     max-height: 110px;
     overflow: auto;
+}
+
+.MuiFormControl-root::-webkit-scrollbar{
+    width: 0px;
 }

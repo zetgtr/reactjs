@@ -1,8 +1,9 @@
 import React from "react";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import "./App.css";
 import { Router } from "./Router";
-import { store } from "./Store";
+import { persistor, store } from "./Store";
 
 export const ROUTER = {
   HOME: "/",
@@ -13,7 +14,9 @@ export const ROUTER = {
 export const App = () => {
   return (
     <Provider store={store}>
-      <Router />
+      <PersistGate loading={null} persistor={persistor}>
+        <Router />
+      </PersistGate>
     </Provider>
   );
 };

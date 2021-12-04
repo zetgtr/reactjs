@@ -1,7 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
-import faker from "faker/locale/ru";
 
-import { ADD_MESSAGE_ACTION, ADD_MESSAGE_BOT_ACTION, DEL_MESSAGE_ACTION } from "./constants";
+import {
+  ADD_MESSAGE_ACTION,
+  DEL_MESSAGE_ACTION,
+} from "./constants";
 
 const initialState = {
   messageList: {},
@@ -12,20 +14,20 @@ const initialState = {
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_MESSAGE_ACTION: {
-      const { chatId, textMessage, name } = action.payload;
+      const { chatId, textMessage, name, chatClass } = action.payload;
       const chatMessages = state.messageList[chatId] ?? [];
       const now = new Date();
       return {
         ...state,
         messageLast: { ...state.messageLast, [chatId]: textMessage },
-        auther: {...state.auther, [chatId]: name},
+        auther: { ...state.auther, [chatId]: name },
         messageList: {
           ...state.messageList,
           [chatId]: [
             ...chatMessages,
             {
               id: uuidv4(),
-              class: "human",
+              chatClass,
               textMessage,
               name,
               data: now.getHours() + ":" + now.getMinutes(),
@@ -34,34 +36,19 @@ export const messagesReducer = (state = initialState, action) => {
         },
       };
     }
-    case ADD_MESSAGE_BOT_ACTION: {
-      const { chatId } = action.payload;
-      const now = new Date();
-      let textBot = faker.lorem.text()
-      return {
-        ...state,
-        messageLast: { ...state.messageLast, [chatId]: textBot },
-        auther: {...state.auther, [chatId]: "Бот"},
-        messageList: {
-          ...state.messageList,
-          [chatId]: [
-            ...state.messageList[chatId],
-            {
-              id: uuidv4(),
-              class: "bot",
-              textMessage: textBot,
-              name: "Бот",
-              data: now.getHours() + ":" + now.getMinutes(),
-            },
-          ],
-        },
-      };
-    }
     case DEL_MESSAGE_ACTION: {
       const { chatId } = action.payload;
-      delete state.messageList[chatId];
-      delete state.messageLast[chatId];
-      return state;
+      let filterMessageList = Object.fromEntries(
+        Object.entries(state.messageList).filter((id) => id[0] !== chatId)
+      );
+      let filterMessageLast = Object.fromEntries(
+        Object.entries(state.messageLast).filter((id) => id[0] !== chatId)
+      );
+      return {
+        ...state,
+        messageList: filterMessageList,
+        messageLast: filterMessageLast,
+      };
     }
     default:
       return state;

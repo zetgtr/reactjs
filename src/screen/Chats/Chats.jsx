@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 export const Chats = () => {
   const { chatsId } = useParams();
   const chatList = useSelector(chatListSelector);
-  console.log(chatsId);
   let chatFilter = new RegExp(chatsId, "i");
   let chat = chatList.filter((item) => chatFilter.test(item.chatId));
   if (!chatsId || chat.length === 0) {

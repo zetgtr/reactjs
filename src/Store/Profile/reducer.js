@@ -6,7 +6,6 @@ const initialState = {
 };
 
 export const profileReducer = (state = initialState, action) => {
-    console.log(action.type)
   switch (action.type) {
     case TOGGLE_USER_NAME_ACTION: {
       return {

@@ -38,6 +38,7 @@ export const ListAuthor = () => {
     dispatch(delMessageAction({chatId}))
   }
   return (
+    <>
     <div className="list">
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
         {chatList.map((chats) => (
@@ -75,14 +76,15 @@ export const ListAuthor = () => {
           </div>
         ))}
       </List>
-      <Fab
-        sx={{ left: 237, position: "fixed", bottom: 20 }}
+    </div>
+    <Fab
+        sx={{ left: 237, position: "absolute", bottom: 20 }}
         color="primary"
         onClick={addChat}
         aria-label="add"
       >
         <AddIcon />
       </Fab>
-    </div>
+    </>
   );
 };

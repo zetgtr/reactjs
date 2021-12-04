@@ -14,7 +14,7 @@ import { Error404 } from "../screen/Error/404";
 import { NoChat } from "../screen/Error/NoChat";
 
 export const Router = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);  // это с material код я его не писал сам
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -22,6 +22,7 @@ export const Router = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <BrowserRouter>
       <div className="conteiner">
