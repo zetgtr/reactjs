@@ -1,7 +1,12 @@
 import "./ListAuthor.css";
-import React from "react";
+import { chatListSelector } from "../../Store/Chats/selector";
+import { stringAvatar } from "../utils";
+import { messageLastSelector } from "../../Store/Messages/selector";
+import { addChatAction, delChatAction } from "../../Store/Chats/actions";
+import { delMessageAction } from "../../Store/Messages/actions";
 import { ROUTER } from "../../Router/constants";
 
+import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -15,11 +20,6 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { chatListSelector } from "../../Store/Chats/selector";
-import { addChatAction, delChatAction } from "../../Store/Chats/actions";
-import { messageLastSelector } from "../../Store/Messages/selector";
-import { stringAvatar } from "../utils";
-import { delMessageAction } from "../../Store/Messages/actions";
 
 export const ListAuthor = () => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export const ListAuthor = () => {
   const messageLast = useSelector(messageLastSelector)
   const addChat = () => {
     let chatName = prompt("Введите название чата")
-    if (chatName === null){
+    if (chatName === null || chatName === ""){
       alert('Вы не ввели название чата')
     }else{
     dispatch(addChatAction({chatName}))
