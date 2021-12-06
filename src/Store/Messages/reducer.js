@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
+import { ADD_MESSAGE_SAGA } from "../sagas/constants";
 
 import {
-  ADD_MESSAGE_ACTION,
   DEL_MESSAGE_ACTION,
 } from "./constants";
 
@@ -13,7 +13,7 @@ const initialState = {
 
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_MESSAGE_ACTION: {
+    case ADD_MESSAGE_SAGA: {
       const { chatId, textMessage, name, chatClass } = action.payload;
       const chatMessages = state.messageList[chatId] ?? [];
       const now = new Date();

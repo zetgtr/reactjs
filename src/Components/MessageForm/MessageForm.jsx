@@ -7,7 +7,7 @@ import SendIcon from "@mui/icons-material/Send";
 
 import "./MessageForm.css";
 import { profileSelector } from "../../Store/Profile/selector";
-import { addMessageWithThink } from "../../Store/Messages/actions";
+import { addMessageAction } from "../../Store/Messages/actions";
 
 export const MessageForm = () => {
   const { chatsId } = useParams();
@@ -19,7 +19,7 @@ export const MessageForm = () => {
   };
   const addMessage = () => {
     if (name) {
-      dispatch(addMessageWithThink({ name, textMessage, chatId: chatsId, chatClass: "human"}));
+      dispatch(addMessageAction({ name, textMessage, chatId: chatsId, chatClass: "human"}));
     } else {
       alert("Введите ваше имя");
     }
@@ -42,13 +42,13 @@ export const MessageForm = () => {
         autoFocus
         placeholder="Сообщение:"
         multiline
-      />
+        />
 
       <Button
         sx={{ borderRadius: "50%", height: " 57px", position: "relative" }}
         variant="contained"
         onClick={addMessage}
-      >
+        >
         <SendIcon
           sx={{
             width: "30px",
@@ -56,7 +56,7 @@ export const MessageForm = () => {
             position: "absolute",
             left: "20px",
           }}
-        />
+          />
       </Button>
     </div>
   );
