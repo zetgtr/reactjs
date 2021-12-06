@@ -7,7 +7,7 @@ export const toggleUserNameAction = () => ({
   type: TOGGLE_USER_NAME_ACTION,
 });
 
-export const hendleChengeAuthorAction = (payload) => ({
+export const chengeAuthorAction = (payload) => ({
   type: CHENGE_AUTHOR_ACTION,
   payload,
 });
