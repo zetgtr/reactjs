@@ -14,13 +14,13 @@ import { Error404 } from "../screen/Error/404";
 import { NoChat } from "../screen/Error/NoChat";
 
 export const Router = () => {
-  const [anchorEl, setAnchorEl] = React.useState(null);  // это с material код я его не писал сам
-  const open = Boolean(anchorEl);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(null);  // максимум так могу изменить ниже написал почему
+  const open = Boolean(isMenuOpen);
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    setIsMenuOpen(event.currentTarget);
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    setIsMenuOpen(null);
   };
 
   return (
@@ -38,7 +38,7 @@ export const Router = () => {
         </Button>
         <Menu
           id="basic-menu"
-          anchorEl={anchorEl}
+          anchorEl={isMenuOpen} // если я меняю это то меню снизу открывается
           open={open}
           onClose={handleClose}
           MenuListProps={{
