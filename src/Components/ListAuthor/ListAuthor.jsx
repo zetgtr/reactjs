@@ -1,7 +1,7 @@
 import "./ListAuthor.css";
 import { chatListSelector } from "../../Store/Chats/selector";
 import { stringAvatar } from "../utils";
-import { messageLastSelector } from "../../Store/Messages/selector";
+import { messageListSelector } from "../../Store/Messages/selector";
 import { addChatAction, delChatAction } from "../../Store/Chats/actions";
 import { delMessageAction } from "../../Store/Messages/actions";
 import { ROUTER } from "../../Router/constants";
@@ -24,7 +24,7 @@ import { useSelector } from "react-redux";
 export const ListAuthor = () => {
   const dispatch = useDispatch();
   const chatList = useSelector(chatListSelector);
-  const messageLast = useSelector(messageLastSelector)
+  const messageList = useSelector(messageListSelector)
   const addChat = () => {
     let chatName = prompt("Введите название чата")
     if (chatName === null || chatName === ""){
@@ -58,7 +58,7 @@ export const ListAuthor = () => {
                         variant="body2"
                         color="text.primary"
                       >
-                      {messageLast[chats.chatId] ?? 'Пусто'}</Typography>
+                      {messageList[chats.chatId]?.slice(-1)[0].textMessage ?? 'Пусто'}</Typography>
                     </React.Fragment>
                   }
                 />

@@ -6,8 +6,7 @@ import {
 } from "./constants";
 
 const initialState = {
-  messageList: {},
-  messageLast: {},
+  messageList: {}
 };
 
 export const messagesReducer = (state = initialState, action) => {
@@ -18,7 +17,6 @@ export const messagesReducer = (state = initialState, action) => {
       const now = new Date();
       return {
         ...state,
-        messageLast: { ...state.messageLast, [chatId]: textMessage },
         messageList: {
           ...state.messageList,
           [chatId]: [
@@ -39,13 +37,9 @@ export const messagesReducer = (state = initialState, action) => {
       let filterMessageList = Object.fromEntries(
         Object.entries(state.messageList).filter((id) => id[0] !== chatId)
       );
-      let filterMessageLast = Object.fromEntries(
-        Object.entries(state.messageLast).filter((id) => id[0] !== chatId)
-      );
       return {
         ...state,
         messageList: filterMessageList,
-        messageLast: filterMessageLast,
       };
     }
     default:
