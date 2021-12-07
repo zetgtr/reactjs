@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import { ADD_CHAT_ACTION, DEL_CHAT_ACTION } from "./constants";
+import { ADD_CHAT_ACTION, DELETE_CHAT_ACTION } from "./constants";
 
 const initialState = {
   chatList: [{ id: uuidv4(), name: "Бот", chatId: "id1"}],
@@ -20,13 +20,13 @@ export const chatsReducer = (state = initialState, action) => {
         ],
       };
     }
-    case DEL_CHAT_ACTION: {
-      let delChat = state.chatList.filter(
-        (item) => item.id !== action.payload.id
+    case DELETE_CHAT_ACTION: {
+      const filteredChats = state.chatList.filter(
+        (item) => item.chatId !== action.payload.chatId
       );
       return {
         ...state,
-        chatList: delChat,
+        chatList: filteredChats,
       };
     }
     default:

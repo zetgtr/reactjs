@@ -10,12 +10,11 @@ import {
 import { stringAvatar } from "../utils";
 
 export const MessageList = () => {
-  const { chatsId } = useParams();
+  const { chatId } = useParams();
   const messageList = useSelector(messageListSelector);
-  messageList[chatsId] = messageList[chatsId] ?? [];
   return (
     <div>
-      {messageList[chatsId].map((message) => (
+      {messageList[chatId]?.map((message) => (
         <div key={message.id} className="flex">
           <Avatar {...stringAvatar(message.name)} />
           <div className="chat">

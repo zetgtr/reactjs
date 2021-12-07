@@ -10,11 +10,10 @@ import { chatListSelector } from "../../Store/Chats/selector";
 import { useSelector } from "react-redux";
 
 export const Chats = () => {
-  const { chatsId } = useParams();
+  const { chatId } = useParams();
   const chatList = useSelector(chatListSelector);
-  let chatFilter = new RegExp(chatsId, "i");
-  let chat = chatList.filter((item) => chatFilter.test(item.chatId));
-  if (!chatsId || chat.length === 0) {
+  const no_chat = chatList.find((item) => item.chatId === chatId);
+  if (!chatId || !no_chat) {
     return <Redirect to={ROUTER.NO_CHAT} />;
   }
   return (

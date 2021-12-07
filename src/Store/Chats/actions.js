@@ -1,4 +1,4 @@
-import { ADD_CHAT_ACTION, DEL_CHAT_ACTION } from "./constants";
+import { ADD_CHAT_ACTION, DELETE_CHAT_ACTION } from "./constants";
 
 export const addChatAction = (payload) => ({
   type: ADD_CHAT_ACTION,
@@ -6,6 +6,6 @@ export const addChatAction = (payload) => ({
 });
 
 export const delChatAction = (payload) => ({
-  type: DEL_CHAT_ACTION,
+  type: DELETE_CHAT_ACTION,
   payload,
 });

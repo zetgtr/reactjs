@@ -10,7 +10,7 @@ import { profileSelector } from "../../Store/Profile/selector";
 import { addMessageAction } from "../../Store/Messages/actions";
 
 export const MessageForm = () => {
-  const { chatsId } = useParams();
+  const { chatId } = useParams();
   const dispatch = useDispatch();
   const { name } = useSelector(profileSelector);
   const [textMessage, setTextMessage] = useState("");
@@ -19,7 +19,7 @@ export const MessageForm = () => {
   };
   const addMessage = () => {
     if (name) {
-      dispatch(addMessageAction({ name, textMessage, chatId: chatsId, chatClass: "human"}));
+      dispatch(addMessageAction({ name, textMessage, chatId, chatClass: "human"}));
     } else {
       alert("Введите ваше имя");
     }

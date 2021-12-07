@@ -31,7 +31,7 @@ export const Profile = () => {
           label="Ваше имя:"
           variant="standard"
           value={name}
-          onChange={(e) => hendleChengeAuthor(e.target.value)} // props.onChengeAuthor
+          onChange={(e) => hendleChengeAuthor(e.target.value)} 
         />
         <div className="showName">
         <FormControlLabel control={<Checkbox defaultChecked onClick={toggleUserName} />} label="Показать введенное имя?" />

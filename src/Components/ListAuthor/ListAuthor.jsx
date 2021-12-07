@@ -33,8 +33,8 @@ export const ListAuthor = () => {
     dispatch(addChatAction({chatName}))
     }
   }
-  const delChat = (id, chatId) => {
-    dispatch(delChatAction({id}))
+  const delChat = (chatId) => {
+    dispatch(delChatAction({chatId}))
     dispatch(delMessageAction({chatId}))
   }
   return (
@@ -68,7 +68,7 @@ export const ListAuthor = () => {
               itemID={chats.id}
               aria-label="delete"
               onClick={() => {
-                delChat(chats.id, chats.chatId);
+                delChat(chats.chatId);
               }}
             >
               <DeleteIcon />
