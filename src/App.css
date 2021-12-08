@@ -1,38 +1,56 @@
 .App {
-  text-align: center;
+  display: flex;
+  max-width: 1798px;
+  margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Message {
+ display: flex;
+  flex-direction: column-reverse;
+  align-items: baseline;
+  
+  width: 65%;
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.AuthorMessege {
+  background-color: #fff;
+  min-height: 100vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.MessageForm {
+  position: absolute;
+  bottom: 50px;
 }
+
+.MessageConteiner{
+  background-image: url(./img/MessageFon.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  flex-grow: 3;
+  align-items: center;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.MessageText {
+   height: 80vh;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  
+}
+
+
