@@ -6,13 +6,14 @@ import {
   toggleUserNameAction,
 } from "../../Store/Profile/actions";
 import { profileSelector } from "../../Store/Profile/selector";
+import { fonSelector } from "../../Store/Settings/selector";
 import "./Profile.css";
 
 export const Profile = () => {
   const dispatch = useDispatch();
 
   const { name, showName } = useSelector(profileSelector);
-
+  const { fon } = useSelector(fonSelector);
   const toggleUserName = () => {
     dispatch(toggleUserNameAction());
   };
@@ -31,15 +32,21 @@ export const Profile = () => {
           label="Ваше имя:"
           variant="standard"
           value={name}
-          onChange={(e) => hendleChengeAuthor(e.target.value)} 
+          onChange={(e) => hendleChengeAuthor(e.target.value)}
         />
         <div className="showName">
-        <FormControlLabel control={<Checkbox defaultChecked onClick={toggleUserName} />} label="Показать введенное имя?" />
+          <FormControlLabel
+            control={<Checkbox defaultChecked onClick={toggleUserName} />}
+            label="Показать введенное имя?"
+          />
           <h1>{showName && name}</h1>
         </div>
       </div>
 
-      <div className="MessageConteiner"></div>
+      <div
+        className="MessageConteiner"
+        style={{ backgroundImage: `url(${fon.url})` }}
+      ></div>
     </div>
   );
 };

@@ -1,12 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 import { ADD_MESSAGE_SAGA } from "../sagas/constants";
 
-import {
-  DELETE_CHAT_MESSAGES_ACTION
-} from "./constants";
+import { DELETE_CHAT_MESSAGES_ACTION } from "./constants";
 
 const initialState = {
-  messageList: {}
+  messageList: {},
 };
 
 export const messagesReducer = (state = initialState, action) => {
@@ -34,13 +32,8 @@ export const messagesReducer = (state = initialState, action) => {
     }
     case DELETE_CHAT_MESSAGES_ACTION: {
       const { chatId } = action.payload;
-      let filterMessageList = Object.fromEntries(
-        Object.entries(state.messageList).filter((id) => id[0] !== chatId)
-      );
-      return {
-        ...state,
-        messageList: filterMessageList,
-      };
+      const { [chatId]: chatToDelete, ...restChats } = state.messageList;
+      return { ...state, messageList: { ...restChats } };
     }
     default:
       return state;

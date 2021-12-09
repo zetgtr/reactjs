@@ -5,16 +5,17 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";
 
-import {ROUTER } from "./constants";
+import { ROUTER } from "./constants";
 import { Home } from "../screen/Home/Home";
 import "./Router.css";
 import { Chats } from "../screen/Chats/Chats";
 import { Profile } from "../screen/Profile/Profile";
 import { Error404 } from "../screen/Error/404";
 import { NoChat } from "../screen/Error/NoChat";
+import { Settings } from "../screen/Settings";
 
 export const Router = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(null);  // максимум так могу изменить ниже написал почему
+  const [isMenuOpen, setIsMenuOpen] = React.useState(null);
   const open = Boolean(isMenuOpen);
   const handleClick = (event) => {
     setIsMenuOpen(event.currentTarget);
@@ -38,7 +39,7 @@ export const Router = () => {
         </Button>
         <Menu
           id="basic-menu"
-          anchorEl={isMenuOpen} // если я меняю это то меню снизу открывается
+          anchorEl={isMenuOpen}
           open={open}
           onClose={handleClose}
           MenuListProps={{
@@ -51,9 +52,15 @@ export const Router = () => {
           <Link className="link" to={ROUTER.PROFILE}>
             <MenuItem onClick={handleClose}>Профиль</MenuItem>
           </Link>
+          <Link className="link" to={ROUTER.SETTINGS}>
+            <MenuItem onClick={handleClose}>Настройки</MenuItem>
+          </Link>
         </Menu>
       </div>
       <Switch>
+        <Route exact path={ROUTER.SETTINGS}>
+          <Settings />
+        </Route>
         <Route exact path={ROUTER.HOME}>
           <Home />
         </Route>

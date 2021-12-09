@@ -2,7 +2,6 @@
   display: flex;
 }
 
-
 .App-header {
   min-height: 100vh;
   display: flex;
@@ -20,7 +19,6 @@
 }
 
 .MessageConteiner {
-  background-image: url(../../img/MessageFon.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -28,6 +26,7 @@
   align-items: center;
   display: flex;
   position: relative;
+  background-position-y: center;
   flex-direction: column;
 }
 

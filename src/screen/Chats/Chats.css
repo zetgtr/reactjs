@@ -36,7 +36,7 @@
 }
 
 .AuthorMessege::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   background-color: #f9f9fd;
 }
@@ -47,7 +47,7 @@
 }
 
 .MessageConteiner {
-  background-image: url(../../img/MessageFon.jpg);
+  background-position-y: center;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -79,11 +79,10 @@
 }
 
 .MessageText::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   background-color: #f9f9fd;
 }
-
 
 .Menu {
   margin-top: 40px;

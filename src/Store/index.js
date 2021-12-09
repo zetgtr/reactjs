@@ -4,13 +4,14 @@ import { messagesReducer } from "./Messages/reducer";
 import { profileReducer } from "./Profile/reducer";
 
 import { persistReducer, persistStore } from "redux-persist";
-import storage from 'redux-persist/lib/storage'
-import createSagaMiddleware from 'redux-saga'
+import storage from "redux-persist/lib/storage";
+import createSagaMiddleware from "redux-saga";
 import { sagaWatcher } from "./sagas/sagas";
+import { fonReducer } from "./Settings/reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 const persistConfig = {
   key: "root",
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   profile: profileReducer,
   chats: chatsReducer,
   messages: messagesReducer,
+  fon: fonReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -30,6 +32,6 @@ export const store = createStore(
   composeEnhancers(applyMiddleware(sagaMiddleware))
 );
 
-sagaMiddleware.run(sagaWatcher)
+sagaMiddleware.run(sagaWatcher);
 
 export const persistor = persistStore(store);
