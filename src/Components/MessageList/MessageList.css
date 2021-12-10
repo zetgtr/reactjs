@@ -12,16 +12,24 @@
   max-width: 452px;
 }
 
-.human {
+.human div{
   color: cornflowerblue;
 }
-
-.bot {
+.chat p{
+margin: 0;
+}
+.bot div{
   color: red;
 }
 .data {
  color: gray;
  font-size: 12px;
  margin-left: 50px;
+}
+
+@media (max-width: 768px){
+  .MessageText {
+    display: block;
+  }
 }
 

@@ -20,6 +20,7 @@ export const MessageForm = () => {
   const addMessage = () => {
     if (name) {
       dispatch(addMessageAction({ name, textMessage, chatId, chatClass: "human"}));
+      setTextMessage("")
     } else {
       alert("Введите ваше имя");
     }
@@ -32,7 +33,7 @@ export const MessageForm = () => {
         sx={{
           borderRadius: "50px",
           backgroundColor: "aliceblue",
-          width: "400px",
+          width: "350px",
           outline: "none",
         }}
         value={textMessage}

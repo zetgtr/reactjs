@@ -43,7 +43,7 @@ export const ListAuthor = () => {
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
         {chatList.map((chats) => (
           <div key={chats.id} className="ListAuthor">
-            <Link className="linkChat" to={ROUTER.CHAT + chats.chatId}>
+            <Link className="linkChat" to={ROUTER.CHAT + chats.id}>
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>
                   <Avatar {...stringAvatar(chats.name)} />

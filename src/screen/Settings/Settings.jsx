@@ -33,77 +33,79 @@ export const Settings = () => {
   const delliteFullFavorotes = () => {
     dispatch(delliteFullFavoritesAction());
   };
-
   return (
-    <div className="App">
-      <div
-        className="AuthorMessege"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <div className="Menu"></div>
-        <h1>Настройка фона</h1>
-        <FormControl component="fieldset">
-          <RadioGroup
-            aria-label="gender"
-            defaultValue="female"
-            name="radio-buttons-group"
-          >
-            <FormControlLabel
-              value="female"
-              control={<Radio />}
-              label="Выбрать новый фон"
-              onChange={changeClickFavorites}
-            />
-            <FormControlLabel
-              onChange={changeClickFavorites}
-              value="male"
-              control={<Radio />}
-              label="Избраное"
-            />
-          </RadioGroup>
-        </FormControl>
-        {!radioFavorites && (
-          <>
-            <Button
-              sx={{ marginTop: "20px", marginBottom: "10px" }}
-              onClick={hendleGetFon}
-              variant="contained"
-              href="#contained-buttons"
+    <div className="App settingConteiner">
+      <div className="MenuMobail">
+        <div
+          className="AuthorMessege AuthorMessegeSettings"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div className="Menu"></div>
+          <h2>Настройка фона</h2>
+          <FormControl component="fieldset">
+            <RadioGroup
+              aria-label="gender"
+              defaultValue="female"
+              name="radio-buttons-group"
             >
-              Дальше
-            </Button>
-            <Button
-              onClick={addFavorites}
-              variant="contained"
-              href="#contained-buttons"
-            >
-              Добавить в избранное
-            </Button>
-          </>
-        )}
-        {radioFavorites && (
-          <>
-            <Button
-              sx={{ marginTop: "20px", marginBottom: "10px" }}
-              onClick={() => delliteFon(fon)}
-              variant="contained"
-              href="#contained-buttons"
-            >
-              Удалить фон
-            </Button>
-            <Button
-              onClick={delliteFullFavorotes}
-              variant="contained"
-              href="#contained-buttons"
-            >
-              Очистить избранное
-            </Button>
-          </>
-        )}
+              <FormControlLabel
+                value="female"
+                control={<Radio />}
+                label="Выбрать новый фон"
+                onChange={changeClickFavorites}
+              />
+              <FormControlLabel
+                onChange={changeClickFavorites}
+                value="male"
+                control={<Radio />}
+                label="Избраное"
+              />
+            </RadioGroup>
+          </FormControl>
+        </div>
+        <div>
+          {!radioFavorites && (
+            <div className="ButtonMobile">
+              <Button
+                sx={{ marginTop: "20px", marginBottom: "10px" }}
+                onClick={hendleGetFon}
+                variant="contained"
+                href="#contained-buttons"
+              >
+                Дальше
+              </Button>
+              <Button
+                onClick={addFavorites}
+                variant="contained"
+                href="#contained-buttons"
+              >
+                Добавить в избранное
+              </Button>
+            </div>
+          )}
+          {radioFavorites && (
+            <div className="ButtonMobile">
+              <Button
+                sx={{ marginTop: "20px", marginBottom: "10px" }}
+                onClick={() => delliteFon(fon)}
+                variant="contained"
+                href="#contained-buttons"
+              >
+                Удалить фон
+              </Button>
+              <Button
+                onClick={delliteFullFavorotes}
+                variant="contained"
+                href="#contained-buttons"
+              >
+                Очистить избранное
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
       <Fon radioFavorites={radioFavorites} hendleGetFon={hendleGetFon} />
     </div>

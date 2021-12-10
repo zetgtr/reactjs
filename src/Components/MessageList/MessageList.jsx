@@ -18,9 +18,9 @@ export const MessageList = () => {
         <div key={message.id} className="flex">
           <Avatar {...stringAvatar(message.name)} />
           <div className="chat">
-            <div>
-              <div className={message.chatClass}>{message.name}</div>
-              <div>{message.textMessage}</div>
+            <div className={message.chatClass}>
+              <div >{message.name}</div>
+              <p>{message.textMessage}</p>
             </div>
             <div className="data">{message.data} </div>
           </div>

@@ -13,11 +13,11 @@
 .favoritesConteiner {
   align-items: center;
   background-position-y: center;
-  width: 80%;
-  display: "flex";
-  flex-wrap: "wrap";
+  display: flex;
+  flex-wrap: wrap;
   overflow-y: auto;
-  height: 100vh;
+  /* height: 100vh; */
+  justify-content: space-around;
   background-size: cover;
   background-repeat: no-repeat;
   flex-grow: 3;

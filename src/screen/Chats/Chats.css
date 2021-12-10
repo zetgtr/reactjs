@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column-reverse;
   align-items: baseline;
-  width: 65%;
+  /* width: 65%; */
 }
 
 .App-header {
@@ -86,4 +86,11 @@
 
 .Menu {
   margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .MenuMobile {
+    width: 100%;
+    height: 50px;    
+  }
 }

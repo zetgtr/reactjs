@@ -16,8 +16,8 @@ import {
 const initialState = {
   fonSearchUrl: undefined,
   favorites: [{ id: uuidv4(), urlFull: imgStockFon, urlSmall: imgStockFon }],
-  fon: imgStockFon,
-  loading: true,
+  fon: {url: imgStockFon},
+  loading: false,
   error: false,
 };
 

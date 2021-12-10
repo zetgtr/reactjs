@@ -14,7 +14,7 @@ export const Chats = () => {
   const { chatId } = useParams();
   const { fon } = useSelector(fonSelector);
   const chatList = useSelector(chatListSelector);
-  const no_chat = chatList.find((item) => item.chatId === chatId);
+  const no_chat = chatList.find((item) => item.id === chatId);
   if (!chatId || !no_chat) {
     return <Redirect to={ROUTER.NO_CHAT} />;
   }
@@ -27,8 +27,9 @@ export const Chats = () => {
       <div
         className="MessageConteiner"
         style={{ backgroundImage: `url(${fon.url})` }}
-      >
+      ><div className="MenuMobile"></div>
         <div className="MessageText">
+        
           <div className="Message">
             <MessageList />
           </div>
