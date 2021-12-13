@@ -1,5 +1,4 @@
 import React from "react";
-import "./Home.css";
 import { ListAuthor } from "../../Components/ListAuthor/ListAuthor";
 import { useSelector } from "react-redux";
 import { fonSelector } from "../../Store/Settings/selector";

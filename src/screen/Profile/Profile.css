@@ -1,39 +1,3 @@
-.App {
-  display: flex;
-}
-
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.AuthorMessege {
-  background-color: #fff;
-  max-height: 100vh;
-  width: 320px;
-  position: relative;
-  overflow-y: auto;
-}
-
-.MessageConteiner {
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh;
-  flex-grow: 3;
-  align-items: center;
-  display: flex;
-  position: relative;
-  background-position-y: center;
-  flex-direction: column;
-}
-
-.Menu {
-  margin-top: 40px;
-}
-
 .showName {
   margin-left: 44px;
 }

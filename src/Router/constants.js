@@ -2,8 +2,10 @@ export const ROUTER = {
   HOME: "/",
   PROFILE: "/profile",
   CHATS: "/chats/:chatId?",
-  CHAT: '/chats/',
+  CHAT: "/chats/",
   NO_CHAT: "/no-chat",
   NOT_FOUND: "/not-found",
-  SETTINGS: "/settings"
+  SETTINGS: "/settings",
+  SIGN_IN: "/sign-in",
+  SIGN_UP: "/sign-up",
 };

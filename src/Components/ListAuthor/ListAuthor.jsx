@@ -33,9 +33,9 @@ export const ListAuthor = () => {
     dispatch(addChatAction({chatName}))
     }
   }
-  const delChat = (chatId) => {
-    dispatch(delChatAction({chatId}))
-    dispatch(delMessageAction({chatId}))
+  const delChat = (id) => {
+    dispatch(delChatAction({id}))
+    dispatch(delMessageAction({id}))
   }
   return (
     <>
@@ -58,7 +58,7 @@ export const ListAuthor = () => {
                         variant="body2"
                         color="text.primary"
                       >
-                      {messageList[chats.chatId]?.slice(-1)[0].textMessage ?? 'Пусто'}</Typography>
+                      {messageList[chats.id]?.slice(-1)[0].textMessage ?? 'Пусто'}</Typography>
                     </React.Fragment>
                   }
                 />
@@ -68,7 +68,7 @@ export const ListAuthor = () => {
               itemID={chats.id}
               aria-label="delete"
               onClick={() => {
-                delChat(chats.chatId);
+                delChat(chats.id);
               }}
             >
               <DeleteIcon />

@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import MenuItem from "@mui/material/MenuItem";
+import { CircularProgress } from "@mui/material";
 import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";
 
+import "./Router.css";
 import { ROUTER } from "./constants";
 import { Home } from "../screen/Home/Home";
-import "./Router.css";
 import { Chats } from "../screen/Chats/Chats";
 import { Profile } from "../screen/Profile/Profile";
 import { Error404 } from "../screen/Error/404";
 import { NoChat } from "../screen/Error/NoChat";
 import { Settings } from "../screen/Settings";
+import { SignIn } from "../screen/Signin";
+import { SignUp } from "../screen/SignUp";
+import { PrivateRoute } from "../Components/PrivateRoute";
+import { PublicRoute } from "../Components/PublicRoute";
+import { authSelector } from "../Store/Auth/selector";
+import { authAction } from "../Store/Auth/actions";
 
 export const Router = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(null);
   const open = Boolean(isMenuOpen);
   const handleClick = (event) => {
     setIsMenuOpen(event.currentTarget);
@@ -23,6 +32,15 @@ export const Router = () => {
   const handleClose = () => {
     setIsMenuOpen(null);
   };
+  const { auth } = useSelector(authSelector);
+  const dispatch = useDispatch();
+  const { loading } = useSelector(authSelector);
+  useEffect(()=>{
+    dispatch(authAction());
+  },[dispatch])
+   
+
+  // if (loading) return <CircularProgress />;
 
   return (
     <BrowserRouter>
@@ -55,27 +73,39 @@ export const Router = () => {
           <Link className="link" to={ROUTER.SETTINGS}>
             <MenuItem onClick={handleClose}>Настройки</MenuItem>
           </Link>
+          <Link className="link" to={ROUTER.SIGN_IN}>
+            <MenuItem onClick={handleClose}>Войти</MenuItem>
+          </Link>
+          <Link className="link" to={ROUTER.SIGN_UP}>
+            <MenuItem onClick={handleClose}>Зарегестрироватся</MenuItem>
+          </Link>
         </Menu>
       </div>
       <Switch>
-        <Route exact path={ROUTER.SETTINGS}>
+        <PrivateRoute exact path={ROUTER.SETTINGS} auth={auth}>
           <Settings />
-        </Route>
-        <Route exact path={ROUTER.HOME}>
+        </PrivateRoute>
+        <PrivateRoute exact path={ROUTER.HOME} auth={auth}>
           <Home />
-        </Route>
-        <Route exact path={ROUTER.CHATS}>
+        </PrivateRoute>
+        <PrivateRoute exact path={ROUTER.CHATS} auth={auth}>
           <Chats />
-        </Route>
+        </PrivateRoute>
         <Route exact path={ROUTER.NO_CHAT}>
           <NoChat />
         </Route>
-        <Route exact path={ROUTER.PROFILE}>
+        <PrivateRoute exact path={ROUTER.PROFILE} auth={auth}>
           <Profile />
-        </Route>
+        </PrivateRoute>
         <Route path={ROUTER.NOT_FOUND}>
           <Error404 />
         </Route>
+        <PublicRoute exact path={ROUTER.SIGN_IN} auth={auth}>
+          <SignIn />
+        </PublicRoute>
+        <PublicRoute exact path={ROUTER.SIGN_UP} auth={auth}>
+          <SignUp />
+        </PublicRoute>
         <Route>
           <Redirect to={ROUTER.NOT_FOUND} />
         </Route>

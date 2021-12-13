@@ -1,7 +1,6 @@
 .fonSettings {
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
   background-position-y: center;
   flex-grow: 3;
   display: flex;
@@ -16,7 +15,6 @@
   display: flex;
   flex-wrap: wrap;
   overflow-y: auto;
-  height: 100vh;
   justify-content: space-around;
   background-size: cover;
   background-repeat: no-repeat;

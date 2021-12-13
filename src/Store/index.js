@@ -8,6 +8,7 @@ import storage from "redux-persist/lib/storage";
 import createSagaMiddleware from "redux-saga";
 import { sagaWatcher } from "./sagas/sagas";
 import { fonReducer } from "./Settings/reducer";
+import { authReducer } from "./Auth/reducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   chats: chatsReducer,
   messages: messagesReducer,
   fon: fonReducer,
+  auth: authReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
