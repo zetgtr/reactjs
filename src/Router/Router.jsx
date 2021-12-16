@@ -20,7 +20,6 @@ import { SignIn } from "../screen/Signin";
 import { SignUp } from "../screen/SignUp";
 import { PrivateRoute } from "../Components/PrivateRoute";
 import { PublicRoute } from "../Components/PublicRoute";
-import { authSelector } from "../Store/Auth/selector";
 import { authAction } from "../Store/Auth/actions";
 
 export const Router = () => {
@@ -32,13 +31,12 @@ export const Router = () => {
   const handleClose = () => {
     setIsMenuOpen(null);
   };
-  const { auth } = useSelector(authSelector);
+  // const { auth } = useSelector(authSelector);
   const dispatch = useDispatch();
-  const { loading } = useSelector(authSelector);
+  // const { loading } = useSelector(authSelector);
   useEffect(()=>{
     dispatch(authAction());
   },[dispatch])
-   
 
   // if (loading) return <CircularProgress />;
 
@@ -82,28 +80,28 @@ export const Router = () => {
         </Menu>
       </div>
       <Switch>
-        <PrivateRoute exact path={ROUTER.SETTINGS} auth={auth}>
+        <PrivateRoute exact path={ROUTER.SETTINGS} >
           <Settings />
         </PrivateRoute>
-        <PrivateRoute exact path={ROUTER.HOME} auth={auth}>
+        <PrivateRoute exact path={ROUTER.HOME} >
           <Home />
         </PrivateRoute>
-        <PrivateRoute exact path={ROUTER.CHATS} auth={auth}>
+        <PrivateRoute exact path={ROUTER.CHATS} >
           <Chats />
         </PrivateRoute>
         <Route exact path={ROUTER.NO_CHAT}>
           <NoChat />
         </Route>
-        <PrivateRoute exact path={ROUTER.PROFILE} auth={auth}>
+        <PrivateRoute exact path={ROUTER.PROFILE} >
           <Profile />
         </PrivateRoute>
         <Route path={ROUTER.NOT_FOUND}>
           <Error404 />
         </Route>
-        <PublicRoute exact path={ROUTER.SIGN_IN} auth={auth}>
+        <PublicRoute exact path={ROUTER.SIGN_IN} >
           <SignIn />
         </PublicRoute>
-        <PublicRoute exact path={ROUTER.SIGN_UP} auth={auth}>
+        <PublicRoute exact path={ROUTER.SIGN_UP}>
           <SignUp />
         </PublicRoute>
         <Route>

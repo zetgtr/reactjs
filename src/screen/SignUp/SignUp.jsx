@@ -32,7 +32,7 @@ export const SignUp = () => {
   };
 
   const hendleSingUp = () => {
-    dispatch(singUpAction({ email, password }));
+    dispatch(singUpAction({ email, password, name }));
   };
 
   return (
