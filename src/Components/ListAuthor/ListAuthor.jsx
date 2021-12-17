@@ -2,11 +2,15 @@ import "./ListAuthor.css";
 import { chatListSelector } from "../../Store/Chats/selector";
 import { stringAvatar } from "../utils";
 import { messageListSelector } from "../../Store/Messages/selector";
-import { addChatAction, delChatAction } from "../../Store/Chats/actions";
+import {
+  addChatAction,
+  delChatAction,
+  getChatFirebaseAction,
+} from "../../Store/Chats/actions";
 import { delMessageAction } from "../../Store/Messages/actions";
 import { ROUTER } from "../../Router/constants";
 
-import React from "react";
+import React, { useEffect } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -24,60 +28,67 @@ import { useSelector } from "react-redux";
 export const ListAuthor = () => {
   const dispatch = useDispatch();
   const chatList = useSelector(chatListSelector);
-  const messageList = useSelector(messageListSelector)
+  const messageList = useSelector(messageListSelector);
   const addChat = () => {
-    let chatName = prompt("Введите название чата")
-    if (chatName === null || chatName === ""){
-      alert('Вы не ввели название чата')
-    }else{
-    dispatch(addChatAction({chatName}))
+    let chatName = prompt("Введите название чата");
+    if (chatName === null || chatName === "") {
+      alert("Вы не ввели название чата");
+    } else {
+      dispatch(addChatAction({ chatName }));
     }
-  }
-  const delChat = (id) => {
-    dispatch(delChatAction({id}))
-    dispatch(delMessageAction({id}))
-  }
+  };
+  const delChat = (id, firebaseIdChat) => {
+    dispatch(delChatAction({ id, firebaseIdChat }));
+    dispatch(delMessageAction({ id, firebaseIdChat }));
+  };
+  useEffect(() => {
+    dispatch(getChatFirebaseAction());
+  }, [dispatch]);
   return (
     <>
-    <div className="list">
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        {chatList.map((chats) => (
-          <div key={chats.id} className="ListAuthor">
-            <Link className="linkChat" to={ROUTER.CHAT + chats.id}>
-              <ListItem alignItems="flex-start">
-                <ListItemAvatar>
-                  <Avatar {...stringAvatar(chats.name)} />
-                </ListItemAvatar>
-                <ListItemText
-                  primary={chats.name}
-                  secondary={
-                    <React.Fragment>
-                      <Typography
-                        sx={{ display: "inline"}}
-                        component="span"
-                        variant="body2"
-                        color="text.primary"
-                      >
-                      {messageList[chats.id]?.slice(-1)[0].textMessage ?? 'Пусто'}</Typography>
-                    </React.Fragment>
-                  }
-                />
-              </ListItem>
-            </Link>
-            <IconButton
-              itemID={chats.id}
-              aria-label="delete"
-              onClick={() => {
-                delChat(chats.id);
-              }}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </div>
-        ))}
-      </List>
-    </div>
-    <Fab
+      <div className="list">
+        <List
+          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+        >
+          {chatList["list"]?.map((chats) => (
+            <div key={chats.id} className="ListAuthor">
+              <Link className="linkChat" to={ROUTER.CHAT + chats.id}>
+                <ListItem alignItems="flex-start">
+                  <ListItemAvatar>
+                    <Avatar {...stringAvatar(chats.name)} />
+                  </ListItemAvatar>
+                  <ListItemText
+                    primary={chats.name}
+                    secondary={
+                      <React.Fragment>
+                        <Typography
+                          sx={{ display: "inline" }}
+                          component="span"
+                          variant="body2"
+                          color="text.primary"
+                        >
+                          {messageList[chats.id]?.slice(-1)[0]?.textMessage ??
+                            "Пусто"}
+                        </Typography>
+                      </React.Fragment>
+                    }
+                  />
+                </ListItem>
+              </Link>
+              <IconButton
+                itemID={chats.id}
+                aria-label="delete"
+                onClick={() => {
+                  delChat(chats.id, chats.firebaseIdChat);
+                }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </div>
+          ))}
+        </List>
+      </div>
+      <Fab
         sx={{ left: 237, position: "absolute", bottom: 20 }}
         color="primary"
         onClick={addChat}

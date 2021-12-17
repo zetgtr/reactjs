@@ -1,47 +1,26 @@
+import faker from "faker/locale/ru";
 import firebase from "firebase";
-import { put } from "redux-saga/effects";
-import { addMessage } from "./addMessage";
+import { delay } from "redux-saga/effects";
+import { v4 as uuidv4 } from "uuid";
 
-export function* chengeMessages({ payload }) {
-  const db = firebase.database();
+export function* onAddMessage({ payload }) {
   const id = firebase.auth().currentUser.uid;
+  firebase.database().ref("messages").child(id).child(payload.chatId).push({
+    name: payload.name,
+    id: uuidv4(),
+    chatClass: "human",
+    textMessage: payload.textMessage,
+  });
+  yield delay(1500);
   firebase
     .database()
     .ref("messages")
+    .child(id)
     .child(payload.chatId)
-    .on("value", (snapshot) => {
-      const newMessages = [];
-      snapshot.forEach((entry) => {
-        messages.push(entry.val());
-      });
-      console.log(snapshot.key, messages);
-    //   yield put({type: ADD_MESSAGE_SAGA, payload: newMessages})
+    .push({
+      name: "Бот",
+      id: uuidv4(),
+      chatClass: "bot",
+      textMessage: faker.lorem.text(),
     });
-};
-
-const onAddMessage = useCallback(
-  (message) => {
-    firebase
-      .database()
-      .ref("messages")
-      .child(chatId)
-      .child(message.id)
-      .set(message);
-  },
-  [chatId]
-);
-
-useEffect(() => {
-  firebase
-    .database()
-    .ref("messages")
-    .child(chatId)
-    .on("value", (snapshot) => {
-      const newMessages = [];
-
-      snapshot.forEach((entry) => {
-        messages.push(entry.val());
-      });
-      setMessages(newMessages);
-    });
-}, []);
+}

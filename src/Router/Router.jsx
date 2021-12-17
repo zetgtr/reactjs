@@ -21,6 +21,8 @@ import { SignUp } from "../screen/SignUp";
 import { PrivateRoute } from "../Components/PrivateRoute";
 import { PublicRoute } from "../Components/PublicRoute";
 import { authAction } from "../Store/Auth/actions";
+import { authSelector } from "../Store/Auth/selector";
+import { getChatFirebaseAction } from "../Store/Chats/actions";
 
 export const Router = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(null);
@@ -31,15 +33,13 @@ export const Router = () => {
   const handleClose = () => {
     setIsMenuOpen(null);
   };
-  // const { auth } = useSelector(authSelector);
   const dispatch = useDispatch();
-  // const { loading } = useSelector(authSelector);
+  const { loading } = useSelector(authSelector);
   useEffect(()=>{
     dispatch(authAction());
   },[dispatch])
-
-  // if (loading) return <CircularProgress />;
-
+  if (loading) return <CircularProgress />;
+  
   return (
     <BrowserRouter>
       <div className="conteiner">

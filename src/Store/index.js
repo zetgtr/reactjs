@@ -17,6 +17,7 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ["fon"]
 };
 
 const rootReducer = combineReducers({
