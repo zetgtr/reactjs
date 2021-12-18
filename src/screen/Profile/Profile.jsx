@@ -25,10 +25,10 @@ export const Profile = () => {
 
   return (
     <div className="App">
-      <div className="AuthorMessege">
+      <div className="AuthorMessege profileMenu">
         <div className="Menu"></div>
         <TextField
-          sx={{ padding: "15px", ml: "32px" }}
+          sx={{ m: "15px"}}
           id="standard-basic"
           label="Ваше имя:"
           variant="standard"
@@ -37,7 +37,7 @@ export const Profile = () => {
         />
         
         <Button
-          sx={{ marginTop: "20px" }}
+          sx={{ marginTop: "20px"}}
           onClick={chengeAuthor}
           variant="contained"
         >

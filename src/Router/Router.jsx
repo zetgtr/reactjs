@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import MenuItem from "@mui/material/MenuItem";
 import { CircularProgress } from "@mui/material";
 import { BrowserRouter, Link, Switch, Route, Redirect } from "react-router-dom";
+import firebase from "firebase";
 
 import "./Router.css";
 import { ROUTER } from "./constants";
@@ -33,15 +34,21 @@ export const Router = () => {
     setIsMenuOpen(null);
   };
 
-  const {auth} = useSelector(authSelector)
+  const { auth } = useSelector(authSelector);
 
   const dispatch = useDispatch();
   const { loading } = useSelector(authSelector);
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(authAction());
-  },[dispatch])
+  }, [dispatch]);
+
+  const hendleExitUser = () => {
+    firebase.auth().signOut()
+    dispatch(authAction())
+  };
+
   if (loading) return <CircularProgress />;
-  
+
   return (
     <BrowserRouter>
       <div className="conteiner">
@@ -64,43 +71,54 @@ export const Router = () => {
             "aria-labelledby": "basic-button",
           }}
         >
-          {auth && <Link className="link" to={ROUTER.HOME}>
-            <MenuItem onClick={handleClose}>Главная</MenuItem>
-          </Link>}
-          {auth && <Link className="link" to={ROUTER.PROFILE}>
-            <MenuItem onClick={handleClose}>Профиль</MenuItem>
-          </Link>}
-          {auth && <Link className="link" to={ROUTER.SETTINGS}>
-            <MenuItem onClick={handleClose}>Настройки</MenuItem>
-          </Link>}
-          {!auth && <Link className="link" to={ROUTER.SIGN_IN}>
-            <MenuItem onClick={handleClose}>Войти</MenuItem>
-          </Link>}
-          {!auth && <Link className="link" to={ROUTER.SIGN_UP}>
-            <MenuItem onClick={handleClose}>Зарегестрироватся</MenuItem>
-          </Link>}
+          {auth && (
+            <Link className="link" to={ROUTER.HOME}>
+              <MenuItem onClick={handleClose}>Главная</MenuItem>
+            </Link>
+          )}
+          {auth && (
+            <Link className="link" to={ROUTER.PROFILE}>
+              <MenuItem onClick={handleClose}>Профиль</MenuItem>
+            </Link>
+          )}
+          {auth && (
+            <Link className="link" to={ROUTER.SETTINGS}>
+              <MenuItem onClick={handleClose}>Настройки</MenuItem>
+            </Link>
+          )}
+          {!auth && (
+            <Link className="link" to={ROUTER.SIGN_IN}>
+              <MenuItem onClick={handleClose}>Войти</MenuItem>
+            </Link>
+          )}
+          {!auth && (
+            <Link className="link" to={ROUTER.SIGN_UP}>
+              <MenuItem onClick={handleClose}>Зарегестрироватся</MenuItem>
+            </Link>
+          )}
+          {auth && <div onClick={hendleExitUser}><MenuItem onClick={handleClose}>Выйти</MenuItem></div>}
         </Menu>
       </div>
       <Switch>
-        <PrivateRoute exact path={ROUTER.SETTINGS} >
+        <PrivateRoute exact path={ROUTER.SETTINGS}>
           <Settings />
         </PrivateRoute>
-        <PrivateRoute exact path={ROUTER.HOME} >
+        <PrivateRoute exact path={ROUTER.HOME}>
           <Home />
         </PrivateRoute>
-        <PrivateRoute exact path={ROUTER.CHATS} >
+        <PrivateRoute exact path={ROUTER.CHATS}>
           <Chats />
         </PrivateRoute>
         <Route exact path={ROUTER.NO_CHAT}>
           <NoChat />
         </Route>
-        <PrivateRoute exact path={ROUTER.PROFILE} >
+        <PrivateRoute exact path={ROUTER.PROFILE}>
           <Profile />
         </PrivateRoute>
         <Route path={ROUTER.NOT_FOUND}>
           <Error404 />
         </Route>
-        <PublicRoute exact path={ROUTER.SIGN_IN} >
+        <PublicRoute exact path={ROUTER.SIGN_IN}>
           <SignIn />
         </PublicRoute>
         <PublicRoute exact path={ROUTER.SIGN_UP}>

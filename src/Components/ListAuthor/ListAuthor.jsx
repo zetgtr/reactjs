@@ -5,12 +5,10 @@ import { messageListSelector } from "../../Store/Messages/selector";
 import {
   addChatAction,
   delChatAction,
-  getChatFirebaseAction,
 } from "../../Store/Chats/actions";
-import { delMessageAction } from "../../Store/Messages/actions";
 import { ROUTER } from "../../Router/constants";
 
-import React, { useEffect } from "react";
+import React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -39,12 +37,8 @@ export const ListAuthor = () => {
   };
   const delChat = (id, firebaseIdChat) => {
     dispatch(delChatAction({ id, firebaseIdChat }));
-    dispatch(delMessageAction({ id, firebaseIdChat }));
   };
   
-  useEffect(() => {
-    dispatch(getChatFirebaseAction({name:"Чаты"}));
-  }, [dispatch]);
   return (
     <>
       <div className="list">

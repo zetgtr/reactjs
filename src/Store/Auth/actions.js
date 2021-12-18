@@ -1,14 +1,10 @@
 import {
   CHENGE_AUTH_ACTION,
-  CHENGE_EMAIL_ACTION, CHENGE_NAME_ACTION, CHENGE_PASSWORD_ACTION, SIGN_IN_ACTION, SIGN_UP_ACTION,
+  CHENGE_EMAIL_ACTION, CHENGE_PASSWORD_ACTION, SIGN_IN_ACTION, SIGN_UP_ACTION,
 } from "./constants";
 
 export const chengeEmailAction = (payload) => ({
   type: CHENGE_EMAIL_ACTION,
-  payload,
-});
-export const chengeNameAction = (payload) => ({
-  type: CHENGE_NAME_ACTION,
   payload,
 });
 export const chengePasswordAction = (payload) => ({

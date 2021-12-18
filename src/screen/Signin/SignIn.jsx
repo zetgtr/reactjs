@@ -12,7 +12,6 @@ import { authSelector } from "../../Store/Auth/selector";
 export const SignIn = () => {
   const { email, password } = useSelector(authSelector);
   const dispatch = useDispatch()
-
   const hendleChengeEmail = (textEmail) => {
     dispatch(chengeEmailAction(textEmail));
   };
@@ -49,7 +48,6 @@ export const SignIn = () => {
         <Button
           sx={{ marginTop: "20px", marginBottom: "10px" }}
           variant="contained"
-          href="#contained-buttons"
           onClick={hendleSingIn}
         >
           Войти
@@ -58,7 +56,6 @@ export const SignIn = () => {
           <Button
             sx={{ marginBottom: "10px" }}
             variant="contained"
-            href="#contained-buttons"
           >
             Зарегистрироваться
           </Button>

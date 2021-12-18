@@ -21,7 +21,7 @@ export const Chats = () => {
   }
   return (
     <div className="App">
-      <div className="AuthorMessege">
+      <div className="AuthorMessege chatAuthorMessage">
         <div className="Menu"></div>
         <ListAuthor />
       </div>

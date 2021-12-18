@@ -1,3 +1,9 @@
 .showName {
   margin-left: 44px;
 }
+
+.profileMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

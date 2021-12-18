@@ -10,17 +10,15 @@ import {
 } from "../Messages/constants";
 import { CHENGE_FIREBASE_NAME_ACTION } from "../Profile/constants";
 import { GET_FON_REQUEST } from "../Settings/constants";
-import { onAddMessage } from "./messagesSaga";
+import { handleInitFirebaseMessages, onAddMessage } from "./messagesSaga";
 import { getFon } from "./fonSaga";
 import { chengeAuthor } from "./profileSaga";
 import {
-  handleInitFirebaseChats,
-  handleInitFirebaseMessages,
   onAuthStateChanged,
   singInSaga,
   singUpSaga,
 } from "./authSaga";
-import { delliteCats, onAddChats } from "./chatsSaga";
+import { delliteCats, handleInitFirebaseChats, onAddChats } from "./chatsSaga";
 import { ADD_CHAT_ACTION, DELETE_CHAT_ACTION, GET_CHAT_FIREBASE_ACTION } from "../Chats/constants";
 
 export function* sagaWatcher() {

@@ -1,13 +1,13 @@
 import { put } from "redux-saga/effects";
 import { FON_URL } from "../../Api";
+import { getFonLoadingActionSaga } from "./actionsSaga";
 import {
   FON_ERROR_SAGA,
   FON_SEARCH_SAGA,
-  GET_FON_LOADING_SAGA,
 } from "./constants";
 
 export function* getFon() {
-  yield put({ type: GET_FON_LOADING_SAGA });
+  yield put(getFonLoadingActionSaga());
   const data = yield getFetchFon();
   yield put(data);
 }
@@ -24,3 +24,4 @@ const getFetchFon = async () => {
     return { type: FON_ERROR_SAGA };
   }
 };
+

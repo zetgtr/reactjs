@@ -16,6 +16,7 @@
   background-color: #fff;
   align-items: center;
   width: 312px;
+  position: relative;
 }
 
 .MessageForm {
@@ -66,6 +67,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
+  }
+
+  .chatAuthorMessage{
+    display: none;
   }
 
   .fonSettings {

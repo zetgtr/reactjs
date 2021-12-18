@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import { ROUTER } from "../../Router/constants";
 import {
   chengeEmailAction,
-  chengeNameAction,
   chengePasswordAction,
   singUpAction,
 } from "../../Store/Auth/actions";
@@ -16,15 +15,11 @@ import { authSelector } from "../../Store/Auth/selector";
 
 export const SignUp = () => {
   const { fon } = useSelector(fonSelector);
-  const { email, name, password } = useSelector(authSelector);
+  const { email, password } = useSelector(authSelector);
   const dispatch = useDispatch();
 
   const hendleChengeEmail = (textEmail) => {
     dispatch(chengeEmailAction(textEmail));
-  };
-
-  const hendleChengeName = (textName) => {
-    dispatch(chengeNameAction(textName));
   };
 
   const hendleChengePassword = (textPassword) => {
@@ -32,7 +27,7 @@ export const SignUp = () => {
   };
 
   const hendleSingUp = () => {
-    dispatch(singUpAction({ email, password, name }));
+    dispatch(singUpAction({ email, password }));
   };
 
   return (
@@ -46,14 +41,6 @@ export const SignUp = () => {
           variant="standard"
           value={email}
           onChange={(e) => hendleChengeEmail(e.target.value)}
-        />
-        <TextField
-          sx={{ marginBottom: "20px" }}
-          id="standard-helperText"
-          label="Ваше имя"
-          variant="standard"
-          value={name}
-          onChange={(e) => hendleChengeName(e.target.value)}
         />
         <TextField
           id="standard-password-input"

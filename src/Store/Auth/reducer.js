@@ -1,7 +1,6 @@
 import { CHENGE_AUTH_USER_SAGA, CHENGE_LOADING_SAGA, ERROR_FIREBASE_SAGA } from "../sagas/constants";
 import {
   CHENGE_EMAIL_ACTION,
-  CHENGE_NAME_ACTION,
   CHENGE_PASSWORD_ACTION,
 } from "./constants";
 
@@ -9,7 +8,6 @@ const initialState = {
   auth: undefined,
   loading: true,
   email: "",
-  name: "",
   password: "",
   error: "",
 };
@@ -39,12 +37,6 @@ export const authReducer = (state = initialState, action) => {
       return {
         ...state,
         auth: action.payload,
-      };
-    }
-    case CHENGE_NAME_ACTION: {
-      return {
-        ...state,
-        name: action.payload,
       };
     }
     case CHENGE_LOADING_SAGA: {
