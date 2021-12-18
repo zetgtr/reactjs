@@ -14,8 +14,8 @@ export const Chats = () => {
   const { chatId } = useParams();
   
   const { fon } = useSelector(fonSelector);
-  const chatList = useSelector(chatListSelector);
-  const no_chat = chatList["list"]?.find((item) => item.id === chatId);
+  const {chatList} = useSelector(chatListSelector);
+  const no_chat = chatList["chats"]?.find((item) => item.id === chatId);
   if (!chatId || !no_chat) {
     return <Redirect to={ROUTER.NO_CHAT} />;
   }

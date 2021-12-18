@@ -22,7 +22,6 @@ import { PrivateRoute } from "../Components/PrivateRoute";
 import { PublicRoute } from "../Components/PublicRoute";
 import { authAction } from "../Store/Auth/actions";
 import { authSelector } from "../Store/Auth/selector";
-import { getChatFirebaseAction } from "../Store/Chats/actions";
 
 export const Router = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(null);
@@ -33,6 +32,9 @@ export const Router = () => {
   const handleClose = () => {
     setIsMenuOpen(null);
   };
+
+  const {auth} = useSelector(authSelector)
+
   const dispatch = useDispatch();
   const { loading } = useSelector(authSelector);
   useEffect(()=>{
@@ -62,21 +64,21 @@ export const Router = () => {
             "aria-labelledby": "basic-button",
           }}
         >
-          <Link className="link" to={ROUTER.HOME}>
+          {auth && <Link className="link" to={ROUTER.HOME}>
             <MenuItem onClick={handleClose}>Главная</MenuItem>
-          </Link>
-          <Link className="link" to={ROUTER.PROFILE}>
+          </Link>}
+          {auth && <Link className="link" to={ROUTER.PROFILE}>
             <MenuItem onClick={handleClose}>Профиль</MenuItem>
-          </Link>
-          <Link className="link" to={ROUTER.SETTINGS}>
+          </Link>}
+          {auth && <Link className="link" to={ROUTER.SETTINGS}>
             <MenuItem onClick={handleClose}>Настройки</MenuItem>
-          </Link>
-          <Link className="link" to={ROUTER.SIGN_IN}>
+          </Link>}
+          {!auth && <Link className="link" to={ROUTER.SIGN_IN}>
             <MenuItem onClick={handleClose}>Войти</MenuItem>
-          </Link>
-          <Link className="link" to={ROUTER.SIGN_UP}>
+          </Link>}
+          {!auth && <Link className="link" to={ROUTER.SIGN_UP}>
             <MenuItem onClick={handleClose}>Зарегестрироватся</MenuItem>
-          </Link>
+          </Link>}
         </Menu>
       </div>
       <Switch>

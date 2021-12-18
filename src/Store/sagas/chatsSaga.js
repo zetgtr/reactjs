@@ -1,7 +1,7 @@
 import firebase from "firebase";
 import { v4 as uuidv4 } from "uuid";
 
-export function* onAddChats({ payload }) {
+export const onAddChats = ({ payload }) => {
   const id = firebase.auth().currentUser.uid;
   const chatId = uuidv4()
   firebase.database().ref("chats").child(id).push({

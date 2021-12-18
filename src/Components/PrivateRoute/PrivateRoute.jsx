@@ -5,5 +5,5 @@ import { authSelector } from "../../Store/Auth/selector";
 
 export const PrivateRoute = ({ ...rest }) =>{
   const { auth } = useSelector(authSelector);
- return (auth?.user != null || auth)  ? <Route { ...rest } /> : <Redirect to={ROUTER.SIGN_IN} />;
+ return auth != null  ? <Route { ...rest } /> : <Redirect to={ROUTER.SIGN_IN} />;
 }

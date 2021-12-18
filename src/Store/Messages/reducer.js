@@ -2,8 +2,6 @@ import {
   GET_MESSAGES_FIREBASE_SAGA,
 } from "../sagas/constants";
 
-import { DELETE_CHAT_MESSAGES_ACTION } from "./constants";
-
 const initialState = {
   messageList: {},
 };
@@ -11,11 +9,12 @@ const initialState = {
 export const messagesReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_MESSAGES_FIREBASE_SAGA: {
-      const { chatId, messages } = action.payload.payload
+      const { chatId, messages } = action.payload
+      const textMessages = Object.values(messages)
       return { ...state,
         messageList: {
           ...state.messageList,
-          [chatId]: messages,
+          [chatId]: textMessages,
         }
       };
     }

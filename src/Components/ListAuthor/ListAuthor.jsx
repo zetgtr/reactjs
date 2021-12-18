@@ -27,7 +27,7 @@ import { useSelector } from "react-redux";
 
 export const ListAuthor = () => {
   const dispatch = useDispatch();
-  const chatList = useSelector(chatListSelector);
+  const {chatList} = useSelector(chatListSelector);
   const messageList = useSelector(messageListSelector);
   const addChat = () => {
     let chatName = prompt("Введите название чата");
@@ -41,8 +41,9 @@ export const ListAuthor = () => {
     dispatch(delChatAction({ id, firebaseIdChat }));
     dispatch(delMessageAction({ id, firebaseIdChat }));
   };
+  
   useEffect(() => {
-    dispatch(getChatFirebaseAction());
+    dispatch(getChatFirebaseAction({name:"Чаты"}));
   }, [dispatch]);
   return (
     <>
@@ -50,7 +51,7 @@ export const ListAuthor = () => {
         <List
           sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
         >
-          {chatList["list"]?.map((chats) => (
+          {chatList["chats"]?.map((chats) => (
             <div key={chats.id} className="ListAuthor">
               <Link className="linkChat" to={ROUTER.CHAT + chats.id}>
                 <ListItem alignItems="flex-start">

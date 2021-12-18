@@ -5,5 +5,5 @@ import { authSelector } from "../../Store/Auth/selector";
 
 export const PublicRoute = ({ ...rest }) => {
   const { auth } = useSelector(authSelector);
-  return (auth?.user==null || !auth) ? <Route {...rest} /> : <Redirect to={ROUTER.PROFILE} />;
+  return !auth ? <Route {...rest} /> : <Redirect to={ROUTER.PROFILE} />;
 };
