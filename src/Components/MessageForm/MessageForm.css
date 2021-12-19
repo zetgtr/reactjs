@@ -1,0 +1,20 @@
+#outlined-textarea-label {
+    color: orange;
+}
+.MuiFormControl-root div fieldset {
+    border: none
+}
+
+.TextField-without-border-radius {
+    display: flex;
+    align-items: center
+}
+
+.MuiFormControl-root {
+    max-height: 110px;
+    overflow: auto;
+}
+
+.MuiFormControl-root::-webkit-scrollbar{
+    width: 0px;
+}

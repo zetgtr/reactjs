@@ -1,0 +1,96 @@
+.App {
+  display: flex;
+}
+
+.Message {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: baseline;
+  /* width: 65%; */
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.AuthorMessege {
+  background-color: #fff;
+  max-height: 100vh;
+  width: 320px;
+  position: relative;
+  overflow-y: auto;
+}
+
+.AuthorMessege::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+
+.AuthorMessege::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #18aaaa;
+}
+
+.AuthorMessege::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+
+.MessageForm {
+  position: absolute;
+  bottom: 50px;
+}
+
+.MessageConteiner {
+  background-position-y: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  flex-grow: 3;
+  align-items: center;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}
+
+.MessageText {
+  height: 80vh;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.MessageText::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+
+.MessageText::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #18aaaa;
+}
+
+.MessageText::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+
+.Menu {
+  margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+  .MenuMobile {
+    width: 100%;
+    height: 50px;    
+  }
+}
