@@ -1,38 +1,104 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  display: flex;
+  max-width: 1798px;
+  margin: auto;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.AuthorMessege {
+  background-color: #fff;
+  align-items: center;
+  width: 312px;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.MessageForm {
+  position: absolute;
+  bottom: 50px;
+}
+.MessageConteiner {
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-grow: 3;
+  align-items: center;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-height: -webkit-full-available;
+  background-repeat: no-repeat;
+  background-position-y: center;
+}
+
+.ButtonMobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MessageText {
+  height: 80vh;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.Menu {
+  margin-top: 40px;
+}
+
+@media (max-width: 1200px) {
+  .imgFavorites {
+    max-height: 23%;
+    max-width: 23%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 768px) {
+  .settingConteiner {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .chatAuthorMessage{
+    display: none;
+  }
+
+  .fonSettings {
+    height: 70vh;
+  }
+  .AuthorMessegeSettings {
+    max-height: 40vh;
+    max-width: 259px;
+    align-items: flex-start;
+  }
+  .MenuMobail {
+    display: flex;
+    position: relative;
+  }
+  .ButtonMobile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 200px;
+    bottom: 5px;
+  }
+  .imgFavorites {
+    max-height: 25%;
+    max-width: 31%;
+  }
+
+  .MenuMobile {
+    width: 100%;
+    height: 50px;
   }
 }

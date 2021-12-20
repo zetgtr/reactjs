@@ -1,0 +1,12 @@
+.MessageConteinerError {
+  background-image: url(../../../img/oblojka404.png);
+  background-position-x: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  flex-grow: 3;
+  align-items: center;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+}

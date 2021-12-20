@@ -1,0 +1,1 @@
+export const FON_URL = "https://api.unsplash.com/photos/random?client_id=EEa83I0DzMf6EJHDffsZT207Z4KuX5Ps7n36wy8hUdU";
