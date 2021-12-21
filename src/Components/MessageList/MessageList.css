@@ -1,0 +1,35 @@
+.chat {
+  display: flex;
+  align-items: flex-end;
+  background-color: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 20px;
+}
+.flex {
+  display: flex;
+  align-items: flex-end;
+  max-width: 452px;
+}
+
+.human div{
+  color: cornflowerblue;
+}
+.chat p{
+margin: 0;
+}
+.bot div{
+  color: red;
+}
+.data {
+ color: gray;
+ font-size: 12px;
+ margin-left: 50px;
+}
+
+@media (max-width: 768px){
+  .MessageText {
+    display: block;
+  }
+}
+

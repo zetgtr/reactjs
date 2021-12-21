@@ -1,0 +1,49 @@
+.fonSettings {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: center;
+  flex-grow: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.favoritesConteiner {
+  align-items: center;
+  background-position-y: center;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  justify-content: space-around;
+  background-size: cover;
+  background-repeat: no-repeat;
+  flex-grow: 3;
+}
+
+.favoritesConteiner::-webkit-scrollbar {
+  width: 10px;
+  background-color: #f9f9fd;
+}
+
+.favoritesConteiner::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #18aaaa;
+}
+
+.favoritesConteiner::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+
+.imgFavorites {
+  height: 40%;
+  width: 31%;
+  margin: 8px;
+  cursor: pointer;
+}
+
+.imgFavorites:hover{
+    box-shadow: 0 0px 10px red;
+}
